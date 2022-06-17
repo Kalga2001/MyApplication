@@ -1,0 +1,15 @@
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\bin\Debug\net6.0\MyApplication.Common.deps.json
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\bin\Debug\net6.0\MyApplication.Common.dll
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\bin\Debug\net6.0\MyApplication.Common.pdb
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\bin\Debug\net6.0\MyApplication.Domain.dll
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\bin\Debug\net6.0\MyApplication.Domain.pdb
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\MyApplication.Common.csproj.AssemblyReference.cache
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\MyApplication.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\MyApplication.Common.AssemblyInfoInputs.cache
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\MyApplication.Common.AssemblyInfo.cs
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\MyApplication.Common.csproj.CoreCompileInputs.cache
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\MyApplication.Common.csproj.CopyComplete
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\MyApplication.Common.dll
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\refint\MyApplication.Common.dll
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\MyApplication.Common.pdb
+C:\Users\Misha\Desktop\MyApplication\MyApplication.Common\obj\Debug\net6.0\ref\MyApplication.Common.dll

@@ -1,0 +1,17 @@
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\bin\Debug\net6.0\MyApplication.DAL.deps.json
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\bin\Debug\net6.0\MyApplication.DAL.runtimeconfig.json
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\bin\Debug\net6.0\MyApplication.DAL.dll
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\bin\Debug\net6.0\MyApplication.DAL.pdb
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\bin\Debug\net6.0\MyApplication.Domain.dll
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\bin\Debug\net6.0\MyApplication.Domain.pdb
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\MyApplication.DAL.csproj.AssemblyReference.cache
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\MyApplication.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\MyApplication.DAL.AssemblyInfoInputs.cache
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\MyApplication.DAL.AssemblyInfo.cs
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\MyApplication.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\MyApplication.DAL.csproj.CopyComplete
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\MyApplication.DAL.dll
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\refint\MyApplication.DAL.dll
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\MyApplication.DAL.pdb
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\MyApplication.DAL.genruntimeconfig.cache
+C:\Users\Misha\Desktop\MyApplication\MyApplication.DAL\obj\Debug\net6.0\ref\MyApplication.DAL.dll

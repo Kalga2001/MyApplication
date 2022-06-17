@@ -1,4 +1,7 @@
-﻿using MyApplication.DAL.Interface;
+﻿using AutoMapper;
+using MyApplication.BLL.Interface;
+using MyApplication.Common.Dtos.Products;
+using MyApplication.DAL.Interface;
 using MyApplication.Domain;
 using System;
 using System.Collections.Generic;
@@ -8,64 +11,54 @@ using System.Threading.Tasks;
 
 namespace MyApplication.BLL.Services
 {
-   public class ProductServices
+   public class ProductServices:IProductService
     {
-        private readonly IGenericRepository<Products> _product;
+        private readonly IGenericRepository _repository;
+        private readonly IMapper _mapper;
 
-        public ProductServices(IGenericRepository<Products> product)
+        public ProductServices(IGenericRepository repository, IMapper mapper)
         {
-            _product = product;
+            _repository = repository;
+            _mapper = mapper;
         }
-        //Get product by id
-        public IEnumerable<Products> GetProductById(int Id)
+
+        public async Task<ProductDto> GetProduct(int id)
         {
-            return _product.GetAll().Where(x => x.ProductId == Id).ToList();
+            var product = await _repository.GetByIdWithInclude<Products>(id, product => product.ProductOffers);
+            var productDto = _mapper.Map<ProductDto>(product);
+            return productDto;
         }
-        //Get all products
-        public IEnumerable<Products> GetAllProducts()
+
+        public async Task<ProductDto> CreateProduct(ProductForUpdateDto productForUpdateDto)
         {
-            try
-            {
-                return _product.GetAll().ToList();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            var product = _mapper.Map<Products>(productForUpdateDto);
+            _repository.Add(product);
+            await _repository.SaveChangesAsync();
+
+            var productDto = _mapper.Map<ProductDto>(product);
+
+            return productDto;
         }
-        //Find product by name
-        public Products GetProductByName(string ProductName)
+
+        public async Task UpdateProduct(int id, ProductForUpdateDto productDto)
         {
-            return _product.GetAll().Where(x => x.ProductName == ProductName).FirstOrDefault();
+            var product = await _repository.GetById<Products>(id);
+            _mapper.Map(productDto, product);
+            await _repository.SaveChangesAsync();
         }
-        //Add Product
-        public async Task<Products> AddProduct(Products Product)
-        {
-            return await _product.Add(Product);
-        }
-        //Delete Product   
+
         public async Task DeleteProduct(int id)
         {
-            await _product.Delete<Products>(id);
-
+            await _repository.Delete<Products>(id);
+            await _repository.SaveChangesAsync();
         }
-        //Update Product Details  
-        public bool UpdateProduct(Products product)
+        public async Task<IEnumerable<ProductCollectionDto>> GetAllProducts()
         {
-            try
-            {
-                var DataList = _product.GetAll().Where(x => x.ProductId!= 0).ToList();
-                foreach (var item in DataList)
-                {
-                    _product.Update(item);
-                }
-                return true;
-            }
-            catch (Exception)
-            {
-                return true;
-            }
+            var productList = await _repository.GetAll<Products>();
+            var productDtoList = _mapper.Map<List<ProductCollectionDto>>(productList);
+            return productDtoList;
         }
     }
+
 }
 

@@ -1,10 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyApplication.Domain;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MyApplication.DAL
 {
@@ -19,6 +16,5 @@ namespace MyApplication.DAL
            public DbSet<Products> Products { get; set; }
            public DbSet<ProductOffers> ProductOffers { get; set; }
            public DbSet<Units> Units { get; set; }
-
         }
 }

@@ -3,16 +3,16 @@ using System.Linq.Expressions;
 
 namespace MyApplication.DAL.Interface
 {
-    public interface IGenericRepository<TEntity>
+    public interface IGenericRepository
     {
         Task<TEntity> GetById<TEntity>(int id) where TEntity : BaseEntity;
+        Task<TEntity> GetByIdWithInclude<TEntity>(int id, params Expression<Func<TEntity, object>>[] includeProperties) where TEntity : BaseEntity;
+        Task<List<TEntity>> GetAll<TEntity>() where TEntity : BaseEntity;
+        Task SaveChangesAsync();
 
-        IEnumerable<TEntity> GetAll();
-
-        Task<TEntity> Add<TEntity>(TEntity entity) where TEntity : BaseEntity;
+        void Add<TEntity>(TEntity entity) where TEntity : BaseEntity;
 
         Task<TEntity> Delete<TEntity>(int id) where TEntity : BaseEntity;
 
-        void Update<TEntity>(TEntity entity) where TEntity:BaseEntity;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyApplication.BLL.Services;
+using MyApplication.Common.Dtos.Products;
 using MyApplication.DAL.Interface;
 using MyApplication.Domain;
 using Newtonsoft.Json;
@@ -11,77 +12,59 @@ namespace MyApplication.WebAPI.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IGenericRepository<Products> _product;
+        private readonly IGenericRepository _product;
         private readonly ProductServices _service;
 
-        public ProductsController(IGenericRepository<Products> product, ProductServices service)
+        public ProductsController(IGenericRepository product, ProductServices service)
         {
             _service = service;
             _product= product;
 
         }
-        //Add Product 
-        [HttpPost("AddProduct")]
-        public async Task<Object> AddProduct([FromBody] Products product)
+        [HttpGet("{id}")]
+        public async Task<ProductDto> GetProduct(int id)
         {
-            try
-            {
-                await _service.AddProduct(product);
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
+            var productDto = await _service.GetProduct(id);
+            return productDto;
         }
-        //Delete Product 
-        [HttpDelete("DeleteProduct")]
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(ProductForUpdateDto productForUpdateDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var productDto = await _service.CreateProduct(productForUpdateDto);
+
+            return CreatedAtAction(nameof(GetProduct), new { id = productDto.ProductId }, productDto);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProduct(int id, ProductForUpdateDto productDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _service.UpdateProduct(id, productDto);
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
         public async Task DeleteProduct(int id)
         {
-           await _service.DeleteProduct(id);
-        }
-        //Update Product
-        [HttpPut("UpdateProduct")]
-        public bool UpdateProduct(Products product)
-        {
-            try
-            {
-                _service.UpdateProduct(product);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-        //GET All Products by Name  
-        [HttpGet("GetAllProductsByName")]
-        public Object GetAllProductsByName(string UserEmail)
-        {
-            var data = _service.GetProductByName(UserEmail);
-            var json = JsonConvert.SerializeObject(data, Formatting.Indented,
-                new JsonSerializerSettings()
-                {
-                    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                }
-            );
-            return json;
+            await _service.DeleteProduct(id);
         }
 
-        //GET All Products  
-        [HttpGet("GetAllProducts")]
-        public Object GetAllProducts()
+        [HttpGet]
+        public async Task<IEnumerable<ProductCollectionDto>> GetAllProducts()
         {
-            var data = _service.GetAllProducts();
-            var json = JsonConvert.SerializeObject(data, Formatting.Indented,
-                new JsonSerializerSettings()
-                {
-                    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                }
-            );
-            return json;
+            var products = await _service.GetAllProducts();
+            return products;
         }
     }
 }
+
 
